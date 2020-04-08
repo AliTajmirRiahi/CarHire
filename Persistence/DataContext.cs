@@ -10,7 +10,7 @@ namespace Persistence
 
         }
 
-
+        public DbSet<Renter> Renters { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 
