@@ -1,7 +1,6 @@
 import axios, { AxiosResponse } from 'axios';
 import { IRenter } from '../models/renter';
 import { toast } from 'materialize-css';
-
 // axios.defaults.baseURL = process.env.REACT_APP_API_URL;
 axios.defaults.baseURL = 'http://localhost:5000/api';
 const responseBody = (response: AxiosResponse) => response.data;
@@ -44,7 +43,7 @@ axios.interceptors.response.use(undefined, (error) => {
   //   if (status === 500) {
   //     toast.error('Server error - check the terminal for more info!');
   //   }
-  throw error.response;
+  throw error;
 });
 
 const requests = {

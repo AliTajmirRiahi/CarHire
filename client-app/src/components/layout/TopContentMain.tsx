@@ -7,9 +7,7 @@ import { category } from '../categoryOptions';
 import DateInput from '../formField/DateInput';
 
 const TopContentMain = () => {
-  const onSubmit = (values: any) => {
-    console.log(values);
-  };
+  const handleFinalFormSubmit = (values: any) => {};
   return (
     <Fragment>
       <div className='art-topContent'></div>
@@ -23,8 +21,9 @@ const TopContentMain = () => {
             </a>
           </div>
           <Form
-            onSubmit={onSubmit}
-            render={({ handleSubmit }) => (
+            // initialValues={renter}
+            onSubmit={handleFinalFormSubmit}
+            render={({ handleSubmit, invalid, pristine }) => (
               <form onSubmit={handleSubmit}>
                 <Field name='title' placeholder='Title' component={TextInput} />
                 <Field
@@ -40,7 +39,11 @@ const TopContentMain = () => {
                   component={SelectInput}
                 />
                 <Field name='date' placeholder='Date' component={DateInput} />
-                <input type='submit' value='submit' />
+                <input
+                  type='submit'
+                  value='submit'
+                  disabled={invalid || pristine}
+                />
               </form>
             )}
           />
