@@ -28,6 +28,7 @@ npm install --save react-toastify (Learn Section 10 Error Handling #14 )
 
 npm i react-final-form final-form
 
+npm i mobx mobx-react-lite
 
 npm i react-widgets react-widgets-date-fns 
 npm i date-fns@^2.0.0

@@ -23,8 +23,8 @@ namespace Application.User
         {
             public QueryValidator()
             {
-                RuleFor(p => p.EmailOrPhoneNumber).NotEmpty();
-                RuleFor(p => p.Password).NotEmpty();
+                RuleFor(p => p.EmailOrPhoneNumber).NotEmpty().WithMessage("موبایل یا ایمیل را وارد کنید");
+                RuleFor(p => p.Password).NotEmpty().WithMessage("کلمه عبور را وارد کنید");
             }
         }
         public class Handler : IRequestHandler<Query, User>

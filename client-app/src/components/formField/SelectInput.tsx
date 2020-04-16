@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import $ from 'jquery';
+// import $ from 'jquery';
 import { FieldRenderProps } from 'react-final-form';
 
 interface IProps extends FieldRenderProps<string, any> {}
@@ -11,14 +11,14 @@ const SelectInput: React.FC<IProps> = ({
   placeholder,
   meta: { touched, error },
 }) => {
-  $('.matSelect').on('change', (e) => {
-    var selected = $(e.target)
-      .children('option')
-      .filter((i, ev) => {
-        return $(ev).val() === $(e.target).val();
-      });
-    input.onChange($(selected).attr('data-id'));
-  });
+  // $('.matSelect').on('change', (e) => {
+  //   var selected = $(e.target)
+  //     .children('option')
+  //     .filter((i, ev) => {
+  //       return $(ev).val() === $(e.target).val();
+  //     });
+  //   input.onChange($(selected).attr('data-id'));
+  // });
   return (
     <Fragment>
       <div className='input-field col s12'>
