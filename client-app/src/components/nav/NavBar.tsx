@@ -1,14 +1,14 @@
 import React, { Fragment, useContext, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { RootStoreContext } from '../../app/stores/rootStore';
 import { observer } from 'mobx-react-lite';
 import { Nav, NavDropdown, Container, Navbar, Row, Col } from 'react-bootstrap';
 import Linear from '../preloader/Linear';
+import LoginForm from '../user/LoginForm';
 const NavBar = () => {
   const rootStore = useContext(RootStoreContext);
   const { appLoaded } = rootStore.commonStore;
   const { user, logout } = rootStore.userStore;
-  // useEffect(() => {}, []);
+  const { openModal } = rootStore.modalStore;
   const log = () => {
     logout();
   };
@@ -74,7 +74,10 @@ const NavBar = () => {
                 </Nav.Link>
               </Nav.Item>
               <Nav.Item style={{ marginRight: 10 }}>
-                <Nav.Link className='btn btn-success text-white' href='/login'>
+                <Nav.Link
+                  className='btn btn-success text-white'
+                  onClick={() => openModal(<LoginForm />, 'ورود', 'sm')}
+                >
                   ورود
                 </Nav.Link>
               </Nav.Item>

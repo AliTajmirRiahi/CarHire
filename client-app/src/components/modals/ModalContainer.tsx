@@ -2,31 +2,33 @@ import React, { useContext, Fragment } from 'react';
 import { RootStoreContext } from '../../app/stores/rootStore';
 import { Modal, Button } from 'react-bootstrap';
 import { observer } from 'mobx-react-lite';
+import { stringify } from 'querystring';
 
 const ModalContainer = () => {
   const rootStore = useContext(RootStoreContext);
   const {
-    modal: { open, body },
+    modal: { open, body, header },
     closeModal,
+    modalProps,
   } = rootStore.modalStore;
   return (
     <Fragment>
       <Modal
         show={open}
         onHide={closeModal}
-        size='lg'
+        size={modalProps?.size}
         aria-labelledby='contained-modal-title-vcenter'
         centered
       >
-        <Modal.Header closeButton>
-          <Modal.Title id='contained-modal-title-vcenter'>
-            Modal heading
+        <Modal.Header bsPrefix='atr-modal-header'>
+          <Modal.Title as='h4' id='contained-modal-title-vcenter'>
+            {header}
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>{body}</Modal.Body>
-        <Modal.Footer>
+        {/* <Modal.Footer>
           <Button onClick={closeModal}>Close</Button>
-        </Modal.Footer>
+        </Modal.Footer> */}
       </Modal>
     </Fragment>
   );

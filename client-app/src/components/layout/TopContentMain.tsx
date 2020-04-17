@@ -4,8 +4,6 @@ import { RootStoreContext } from '../../app/stores/rootStore';
 import LoginForm from '../user/LoginForm';
 
 const TopContentMain = () => {
-  const rootStore = useContext(RootStoreContext);
-  const { openModal } = rootStore.modalStore;
   return (
     <Fragment>
       <div className='art-topContent'></div>
@@ -14,11 +12,7 @@ const TopContentMain = () => {
           <h1>مدیریت کرایه خودرو آرتــا</h1>
           <h5>تمام مراحل کرایه خودرو را اینترنتی کنید!</h5>
           <div style={{ margin: 50 }}>
-            <Link
-              to='#'
-              onClick={() => openModal(<LoginForm />)}
-              className='btn btn-success'
-            >
+            <Link to='/register' className='btn btn-success'>
               شروع کنید
               {'   '}
               <i className='fa fa-car' aria-hidden='true'></i>
