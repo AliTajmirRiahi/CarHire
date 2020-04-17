@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import '../css/style-responsive.css';
 import '../css/style.css';
 import '../css/table-responsive.css';
@@ -41,7 +41,7 @@ const Admin = () => {
                   <a
                     data-toggle='dropdown'
                     className='dropdown-toggle'
-                    href='index.html#'
+                    href='/#'
                   >
                     <i className='fa fa-tasks'></i>
                     <span className='badge bg-theme'>4</span>
@@ -52,7 +52,7 @@ const Admin = () => {
                       <p className='green'>You have 4 pending tasks</p>
                     </li>
                     <li>
-                      <a href='index.html#'>
+                      <a href='/#'>
                         <div className='task-info'>
                           <div className='desc'>Dashio Admin Panel</div>
                           <div className='percent'>40%</div>
@@ -72,7 +72,7 @@ const Admin = () => {
                       </a>
                     </li>
                     <li>
-                      <a href='index.html#'>
+                      <a href='/#'>
                         <div className='task-info'>
                           <div className='desc'>Database Update</div>
                           <div className='percent'>60%</div>
@@ -92,7 +92,7 @@ const Admin = () => {
                       </a>
                     </li>
                     <li>
-                      <a href='index.html#'>
+                      <a href='/#'>
                         <div className='task-info'>
                           <div className='desc'>Product Development</div>
                           <div className='percent'>80%</div>
@@ -110,7 +110,7 @@ const Admin = () => {
                       </a>
                     </li>
                     <li>
-                      <a href='index.html#'>
+                      <a href='/#'>
                         <div className='task-info'>
                           <div className='desc'>Payments Sent</div>
                           <div className='percent'>70%</div>
@@ -130,7 +130,7 @@ const Admin = () => {
                       </a>
                     </li>
                     <li className='external'>
-                      <a href='#'>See All Tasks</a>
+                      <a href='/#'>See All Tasks</a>
                     </li>
                   </ul>
                 </li>
@@ -140,7 +140,7 @@ const Admin = () => {
                   <a
                     data-toggle='dropdown'
                     className='dropdown-toggle'
-                    href='index.html#'
+                    href='/#'
                   >
                     <i className='fa fa-envelope-o'></i>
                     <span className='badge bg-theme'>5</span>
@@ -151,7 +151,7 @@ const Admin = () => {
                       <p className='green'>You have 5 new messages</p>
                     </li>
                     <li>
-                      <a href='index.html#'>
+                      <a href='/#'>
                         <span className='photo'>
                           <img alt='avatar' src='img/ui-zac.jpg' />
                         </span>
@@ -165,7 +165,7 @@ const Admin = () => {
                       </a>
                     </li>
                     <li>
-                      <a href='index.html#'>
+                      <a href='/#'>
                         <span className='photo'>
                           <img alt='avatar' src='img/ui-divya.jpg' />
                         </span>
@@ -179,7 +179,7 @@ const Admin = () => {
                       </a>
                     </li>
                     <li>
-                      <a href='index.html#'>
+                      <a href='/#'>
                         <span className='photo'>
                           <img alt='avatar' src='img/ui-danro.jpg' />
                         </span>
@@ -193,7 +193,7 @@ const Admin = () => {
                       </a>
                     </li>
                     <li>
-                      <a href='index.html#'>
+                      <a href='/#'>
                         <span className='photo'>
                           <img alt='avatar' src='img/ui-sherman.jpg' />
                         </span>
@@ -205,7 +205,7 @@ const Admin = () => {
                       </a>
                     </li>
                     <li>
-                      <a href='index.html#'>See all messages</a>
+                      <a href='/#'>See all messages</a>
                     </li>
                   </ul>
                 </li>
@@ -215,7 +215,7 @@ const Admin = () => {
                   <a
                     data-toggle='dropdown'
                     className='dropdown-toggle'
-                    href='index.html#'
+                    href='/#'
                   >
                     <i className='fa fa-bell-o'></i>
                     <span className='badge bg-warning'>7</span>
@@ -226,7 +226,7 @@ const Admin = () => {
                       <p className='yellow'>You have 7 new notifications</p>
                     </li>
                     <li>
-                      <a href='index.html#'>
+                      <a href='/#'>
                         <span className='label label-danger'>
                           <i className='fa fa-bolt'></i>
                         </span>
@@ -235,7 +235,7 @@ const Admin = () => {
                       </a>
                     </li>
                     <li>
-                      <a href='index.html#'>
+                      <a href='/#'>
                         <span className='label label-warning'>
                           <i className='fa fa-bell'></i>
                         </span>
@@ -244,7 +244,7 @@ const Admin = () => {
                       </a>
                     </li>
                     <li>
-                      <a href='index.html#'>
+                      <a href='/#'>
                         <span className='label label-danger'>
                           <i className='fa fa-bolt'></i>
                         </span>
@@ -253,7 +253,7 @@ const Admin = () => {
                       </a>
                     </li>
                     <li>
-                      <a href='index.html#'>
+                      <a href='/#'>
                         <span className='label label-success'>
                           <i className='fa fa-plus'></i>
                         </span>
@@ -262,7 +262,7 @@ const Admin = () => {
                       </a>
                     </li>
                     <li>
-                      <a href='index.html#'>See all notifications</a>
+                      <a href='/#'>See all notifications</a>
                     </li>
                   </ul>
                 </li>
@@ -317,6 +317,7 @@ const Admin = () => {
                 <p className='centered'>
                   <a href='profile.html'>
                     <img
+                      alt=''
                       src='/assets/user.png'
                       className='rounded-circle'
                       width='80'
@@ -325,13 +326,13 @@ const Admin = () => {
                 </p>
                 <h5 className='centered'>Sam Soffes</h5>
                 <li className='mt'>
-                  <a className='active' href='#'>
+                  <a className='active' href='/#'>
                     <i className='icon icon-performance'></i>
                     <span>میزکار</span>
                   </a>
                 </li>
                 <li className='sub-menu '>
-                  <a href='#' className='hasSubmenu'>
+                  <a href='/#' className='hasSubmenu'>
                     <i className='icon icon-rial-1'></i>
                     <span>مالی</span>
                     <i
@@ -341,13 +342,13 @@ const Admin = () => {
                   </a>
                   <ul style={{ display: 'none' }}>
                     <li className='sub-menu '>
-                      <a href='#'>
+                      <a href='/#'>
                         <i className='icon icon-bank-1' aria-hidden='true'></i>
                         <span>بانک ها</span>
                       </a>
                     </li>
                     <li className='sub-menu '>
-                      <a href='#'>
+                      <a href='/#'>
                         <i
                           className='icon icon-balance-2'
                           aria-hidden='true'
@@ -356,7 +357,7 @@ const Admin = () => {
                       </a>
                     </li>
                     <li className='sub-menu '>
-                      <a href='#'>
+                      <a href='/#'>
                         <i
                           className='icon icon-cheque-1'
                           aria-hidden='true'
@@ -367,31 +368,31 @@ const Admin = () => {
                   </ul>
                 </li>
                 <li className='sub-menu'>
-                  <a href='#'>
+                  <a href='/#'>
                     <i className='icon icon-owner-1'></i>
                     <span>مالکین</span>
                   </a>
                 </li>
                 <li className='sub-menu'>
-                  <a href='#'>
+                  <a href='/#'>
                     <i className='icon icon-rent-1'></i>
                     <span>مستأجرین</span>
                   </a>
                 </li>
                 <li className='sub-menu'>
-                  <a href='#'>
+                  <a href='/#'>
                     <i className='fa fa-handshake-o'></i>
                     <span>قرارداد ها</span>
                   </a>
                 </li>
                 <li className='sub-menu'>
-                  <a href='#'>
+                  <a href='/#'>
                     <i className='icon icon-insurance-1'></i>
                     <span>بیمه ها</span>
                   </a>
                 </li>
                 <li className='sub-menu '>
-                  <a href='#'>
+                  <a href='/#'>
                     <i className='fa fa-car'></i>
                     <span>خودرو</span>
                     <i
@@ -401,7 +402,7 @@ const Admin = () => {
                   </a>
                   <ul style={{ display: 'none' }}>
                     <li className='sub-menu '>
-                      <a href='#'>
+                      <a href='/#'>
                         <i
                           className='icon icon-license-plate-2'
                           aria-hidden='true'
@@ -410,25 +411,25 @@ const Admin = () => {
                       </a>
                     </li>
                     <li className='sub-menu '>
-                      <a href='#'>
+                      <a href='/#'>
                         <i className='icon icon-cars-1' aria-hidden='true'></i>
                         <span>خودرو ها</span>
                       </a>
                     </li>
                     <li className='sub-menu '>
-                      <a href='#'>
+                      <a href='/#'>
                         <i className='fa fa-building' aria-hidden='true'></i>
                         <span>شرکت های بیمه</span>
                       </a>
                     </li>
                     <li className='sub-menu '>
-                      <a href='#'>
+                      <a href='/#'>
                         <i className='fa fa-exchange' aria-hidden='true'></i>
                         <span>انواع تعویض ها</span>
                       </a>
                     </li>
                     <li className='sub-menu '>
-                      <a href='#'>
+                      <a href='/#'>
                         <i
                           className='icon icon-money-bag-2'
                           aria-hidden='true'
@@ -437,7 +438,7 @@ const Admin = () => {
                       </a>
                     </li>
                     <li className='sub-menu '>
-                      <a href='#'>
+                      <a href='/#'>
                         <i
                           className='icon icon-car-parts-1'
                           aria-hidden='true'
@@ -446,7 +447,7 @@ const Admin = () => {
                       </a>
                     </li>
                     <li className='sub-menu '>
-                      <a href='#'>
+                      <a href='/#'>
                         <i
                           className='icon icon-maintenance-1'
                           aria-hidden='true'
@@ -455,7 +456,7 @@ const Admin = () => {
                       </a>
                     </li>
                     <li className='sub-menu '>
-                      <a href='#'>
+                      <a href='/#'>
                         <i
                           className='icon icon-car-gps-2'
                           aria-hidden='true'
@@ -466,7 +467,7 @@ const Admin = () => {
                   </ul>
                 </li>
                 <li className='sub-menu '>
-                  <a href='#'>
+                  <a href='/#'>
                     <i className='icon icon-settings-1'></i>
                     <span>تنظیمات</span>
                     <i
@@ -476,7 +477,7 @@ const Admin = () => {
                   </a>
                   <ul style={{ display: 'none' }}>
                     <li className='sub-menu '>
-                      <a href='#'>
+                      <a href='/#'>
                         <i
                           className='icon icon-control-1'
                           aria-hidden='true'
@@ -485,13 +486,13 @@ const Admin = () => {
                       </a>
                     </li>
                     <li className='sub-menu '>
-                      <a href='#'>
+                      <a href='/#'>
                         <i className='fa fa-handshake-o' aria-hidden='true'></i>
                         <span>تنظیمات قرارداد ها</span>
                       </a>
                     </li>
                     <li className='sub-menu '>
-                      <a href='#'>
+                      <a href='/#'>
                         <i
                           className='icon icon-inquiry-1'
                           aria-hidden='true'
@@ -502,7 +503,7 @@ const Admin = () => {
                   </ul>
                 </li>
                 <li className='sub-menu '>
-                  <a href='#'>
+                  <a href='/#'>
                     <i className='fa fa-user'></i>
                     <span>کاربران</span>
                   </a>
@@ -535,7 +536,7 @@ const Admin = () => {
           <div className='credits'>
             
           </div>
-          <a href='index.html#' className='go-top'>
+          <a href='/#' className='go-top'>
             <i className='fa fa-angle-up'></i>
           </a>
         </div>

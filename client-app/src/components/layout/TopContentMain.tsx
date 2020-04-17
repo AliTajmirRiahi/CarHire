@@ -1,7 +1,5 @@
-import React, { Fragment, useContext } from 'react';
+import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
-import { RootStoreContext } from '../../app/stores/rootStore';
-import LoginForm from '../user/LoginForm';
 
 const TopContentMain = () => {
   return (

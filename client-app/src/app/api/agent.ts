@@ -27,9 +27,10 @@ axios.interceptors.response.use(undefined, (error) => {
   if (status === 404) {
     toast.error(statusText);
   } else if (status === 400) {
-    Object.keys(data.errors).map((key) => {
+    Object.keys(data.errors).forEach((key) => {
       if (Array.isArray(data.errors[key])) toast.error(data.errors[key][0]);
       else toast.error(data.errors[key]);
+      return;
     });
   } else if (
     status === 401 &&

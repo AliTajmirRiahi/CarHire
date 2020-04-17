@@ -1,8 +1,7 @@
 import React, { useContext, Fragment } from 'react';
 import { RootStoreContext } from '../../app/stores/rootStore';
-import { Modal, Button } from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
 import { observer } from 'mobx-react-lite';
-import { stringify } from 'querystring';
 
 const ModalContainer = () => {
   const rootStore = useContext(RootStoreContext);
