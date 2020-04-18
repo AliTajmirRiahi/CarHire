@@ -3,6 +3,7 @@ import axios, { AxiosResponse } from 'axios';
 import { IRenter } from '../models/renter';
 import { history } from '../..';
 import { toast } from 'react-toastify';
+import { IBaseInfo } from '../models/baseInfo';
 // axios.defaults.baseURL = process.env.REACT_APP_API_URL;
 axios.defaults.baseURL = 'http://localhost:5000/api';
 const responseBody = (response: AxiosResponse) => response.data;
@@ -92,4 +93,11 @@ const User = {
     requests.post('/user/register', user),
 };
 
-export default { Renter, User };
+const BaseInfo = {
+  details: (type: string): Promise<IBaseInfo[]> =>
+    requests.get(`/BaseInfo/${type}`),
+  current: (id: string): Promise<IBaseInfo> =>
+    requests.get(`/BaseInfo/current/${id}`),
+};
+
+export default { Renter, User, BaseInfo };

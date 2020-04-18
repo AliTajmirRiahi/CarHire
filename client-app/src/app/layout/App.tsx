@@ -1,6 +1,7 @@
 import React, { useEffect, useContext, Fragment } from 'react';
 import '../../app/layout/style.css';
 import '../../app/layout/artaFont.css';
+import '../layout/css/checkbox.scss';
 import { Route, withRouter, Switch } from 'react-router-dom';
 import RegisterForm from '../../components/user/RegisterForm';
 import BaseHomePage from '../../components/layout/BaseHomePage';

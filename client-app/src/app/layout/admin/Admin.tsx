@@ -513,7 +513,7 @@ const Admin = () => {
             </div>
           </aside>
         </div>
-        <div className='col-sm-10 art-mainContent shadow-sm'>
+        <div className='col-sm-10 art-mainContent '>
           <div className='container'>
             <div style={{ height: 500 }}>
               <Dashboard />

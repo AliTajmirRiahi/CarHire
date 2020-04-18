@@ -328,7 +328,7 @@ input#txtDashSearch {
 .art-mainContent {
   padding-top: 75px;
   margin-right: 35px !important;
-  background-color: #4ecdc429;
+  /* background-color: #4ecdc429; */
   text-align: right;
 }
 
@@ -339,4 +339,26 @@ input#txtDashSearch {
   border-top-left-radius: calc(0.3rem - 1px);
   border-top-right-radius: calc(0.3rem - 1px);
   background-color: teal;
+}
+.table td,
+.table th {
+  border-top: none !important;
+}
+
+.art-table {
+  border-radius: 20px;
+}
+.art-divTable {
+  padding: 5px;
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.475) !important;
+  border-radius: 20px;
+}
+.art-lineheight40 {
+  line-height: 40px;
+}
+.art-dirltr {
+  direction: ltr !important;
+}
+.art-dirrtl {
+  direction: rtl !important;
 }
