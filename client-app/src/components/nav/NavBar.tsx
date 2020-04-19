@@ -6,7 +6,7 @@ import Linear from '../preloader/Linear';
 import LoginForm from '../user/LoginForm';
 const NavBar = () => {
   const rootStore = useContext(RootStoreContext);
-  const { appLoaded } = rootStore.commonStore;
+  // const { appLoaded } = rootStore.commonStore;
   const { user, logout } = rootStore.userStore;
   const { openModal } = rootStore.modalStore;
   const log = () => {
@@ -85,7 +85,7 @@ const NavBar = () => {
           )}
         </Nav>
       </Navbar>
-      {!appLoaded && <Linear />}
+      {/* {!appLoaded && <Linear />} */}
     </Container>
   );
 };

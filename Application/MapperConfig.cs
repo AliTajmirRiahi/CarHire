@@ -13,6 +13,9 @@ namespace Application
             {
                 config.Bind(source => source.UserName, target => target.Username);
             });
+            TinyMapper.Bind<Application.BasiesInfo.Update.Command, Domain.BaseInfo>();
+            TinyMapper.Bind<Application.BasiesInfo.Create.Query, Domain.BaseInfo>();
+            TinyMapper.Bind<Application.BasiesInfo.Create.Query, Domain.Bank>();
         }
     }
 }

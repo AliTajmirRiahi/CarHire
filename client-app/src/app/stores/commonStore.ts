@@ -18,16 +18,17 @@ export default class CommonStore {
   }
 
   @observable token: string | null = window.localStorage.getItem('token');
-  @observable appLoaded = false;
   @observable submitting = false;
+  @observable loading = false;
 
   @action setToken = (token: string | null) => {
     this.token = token;
   };
-  @action setAppLoaded = () => {
-    this.appLoaded = true;
-  };
   @action setSubmitting = (value: boolean) => {
     this.submitting = value;
+  };
+
+  @action setLoading = (value: boolean) => {
+    this.loading = value;
   };
 }

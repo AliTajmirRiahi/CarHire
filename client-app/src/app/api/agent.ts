@@ -98,6 +98,10 @@ const BaseInfo = {
     requests.get(`/BaseInfo/${type}`),
   current: (id: string): Promise<IBaseInfo> =>
     requests.get(`/BaseInfo/current/${id}`),
+  update: (values: IBaseInfo) => requests.put(`/BaseInfo/${values.id}`, values),
+  create: (type: string, values: IBaseInfo) =>
+    requests.post(`/BaseInfo/${type}`, values),
+  delete: (id: string) => requests.del(`/BaseInfo/${id}`),
 };
 
 export default { Renter, User, BaseInfo };

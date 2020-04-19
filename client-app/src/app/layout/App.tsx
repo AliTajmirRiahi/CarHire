@@ -16,15 +16,16 @@ import LoginPage from '../../components/user/LoginPage';
 
 function App() {
   const rootStore = useContext(RootStoreContext);
-  const { setAppLoaded, token } = rootStore.commonStore;
+  const { token } = rootStore.commonStore;
   const { getUser } = rootStore.userStore;
   useEffect(() => {
     if (token) {
-      getUser().finally(() => setAppLoaded());
+      getUser();
+      // .finally(() => setAppLoaded())
     } else {
-      setAppLoaded();
+      // setAppLoaded();
     }
-  }, [token, setAppLoaded, getUser]);
+  }, [token, getUser]);
   return (
     <Fragment>
       <ModalContainer />
@@ -38,7 +39,7 @@ function App() {
           <Route exact path='/' component={BaseHomePage} />
           <Route exact path='/login' component={LoginPage} />
           <Route exact path='/register' component={RegisterForm} />
-          <Route exact path='/dashboard' component={Admin} />
+          <Route exact path='/dashboard*' component={Admin} />
           <Route component={NotFound} />
         </Switch>
       </div>

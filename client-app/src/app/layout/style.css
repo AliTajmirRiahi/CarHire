@@ -137,6 +137,7 @@ body {
   font-family: 'IRANSansWeb' !important;
   background-color: rgb(234, 234, 234) !important;
   direction: rtl;
+  overflow-x: hidden;
 }
 .defaultFont,
 .Toastify__toast-body {
@@ -361,4 +362,64 @@ input#txtDashSearch {
 }
 .art-dirrtl {
   direction: rtl !important;
+}
+.art-adminlinear {
+  position: fixed;
+  top: 55px;
+  width: 100%;
+  z-index: 10000;
+}
+.art-animateGrad {
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175) !important;
+  border-radius: 20px;
+  background: linear-gradient(270deg, #d7d7d7, #ffffff, #d7d7d7);
+  background-size: 600% 600%;
+  -webkit-animation: AnimationName 2s ease infinite;
+  -moz-animation: AnimationName 2s ease infinite;
+  -o-animation: AnimationName 2s ease infinite;
+  animation: AnimationName 2s ease infinite;
+}
+@-webkit-keyframes AnimationName {
+  0% {
+    background-position: 0% 51%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 51%;
+  }
+}
+@-moz-keyframes AnimationName {
+  0% {
+    background-position: 0% 51%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 51%;
+  }
+}
+@-o-keyframes AnimationName {
+  0% {
+    background-position: 0% 51%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 51%;
+  }
+}
+@keyframes AnimationName {
+  0% {
+    background-position: 0% 51%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 51%;
+  }
 }

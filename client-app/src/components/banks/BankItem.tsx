@@ -1,6 +1,9 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useContext } from 'react';
 import { IBaseInfo } from '../../app/models/baseInfo';
 import { Button, ButtonGroup } from 'react-bootstrap';
+import { RootStoreContext } from '../../app/stores/rootStore';
+import BankFrom from './BankForm';
+import { observer } from 'mobx-react-lite';
 
 interface IProps {
   bank: IBaseInfo;
@@ -8,6 +11,20 @@ interface IProps {
 }
 
 const BankItem: React.FC<IProps> = ({ bank: { id, value }, index }) => {
+  const rootStore = useContext(RootStoreContext);
+  const { openModal } = rootStore.modalStore;
+  const { setLoading } = rootStore.commonStore;
+  const { deleteInfo } = rootStore.baseInfoStore;
+
+  const onEdit = () => {
+    openModal(<BankFrom id={id} />, 'اطلاعات بانک', 'sm');
+  };
+  const onDelete = () => {
+    setLoading(true);
+    deleteInfo(id).then(() => {
+      setLoading(false);
+    });
+  };
   return (
     <Fragment>
       <tr>
@@ -23,8 +40,12 @@ const BankItem: React.FC<IProps> = ({ bank: { id, value }, index }) => {
         <td className='text-center art-lineheight40'>{value}</td>
         <td className='text-center w-25'>
           <ButtonGroup className='art-dirltr mb-2'>
-            <Button variant='danger'>حذف</Button>
-            <Button variant='success'>ویرایش</Button>
+            <Button variant='danger' onClick={onDelete}>
+              حذف
+            </Button>
+            <Button variant='success' onClick={onEdit}>
+              ویرایش
+            </Button>
           </ButtonGroup>
         </td>
       </tr>
@@ -32,4 +53,4 @@ const BankItem: React.FC<IProps> = ({ bank: { id, value }, index }) => {
   );
 };
 
-export default BankItem;
+export default observer(BankItem);

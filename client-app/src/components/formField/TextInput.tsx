@@ -12,7 +12,7 @@ const TextInput: React.FC<IProps> = ({
   width,
   myType,
   placeholder,
-  meta: { touched, error },
+  meta: { touched, error, pristine },
   faicon,
   hSpace = '',
 }) => {
@@ -33,8 +33,6 @@ const TextInput: React.FC<IProps> = ({
           {...input}
           placeholder={placeholder}
           type={myType}
-          aria-label='Username'
-          aria-describedby='basic-addon1'
           style={{ width: inputWidth }}
         />
         {touched && error && (
