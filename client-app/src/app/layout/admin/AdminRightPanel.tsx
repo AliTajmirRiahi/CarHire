@@ -4,16 +4,7 @@ const AdminRightPanel = () => {
   return (
     <div className='col-sm-auto'>
       <aside>
-        <div
-          id='sidebar'
-          className='nav-collapse '
-          style={{
-            overflow: 'hidden',
-            outline: 'none',
-            position: 'fixed',
-            zIndex: 1,
-          }}
-        >
+        <div id='sidebar' className='nav-collapse '>
           {/* tabindex="5000" */}
           {/*  sidebar menu start*/}
           <ul className='sidebar-menu' id='nav-accordion'>

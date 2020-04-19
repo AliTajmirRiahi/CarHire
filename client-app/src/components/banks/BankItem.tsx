@@ -4,7 +4,7 @@ import { Button, ButtonGroup } from 'react-bootstrap';
 import { RootStoreContext } from '../../app/stores/rootStore';
 import BankFrom from './BankForm';
 import { observer } from 'mobx-react-lite';
-
+import { showConfirm } from '../../app/util/util';
 interface IProps {
   bank: IBaseInfo;
   index: number;
@@ -20,9 +20,11 @@ const BankItem: React.FC<IProps> = ({ bank: { id, value }, index }) => {
     openModal(<BankFrom id={id} />, 'اطلاعات بانک', 'sm');
   };
   const onDelete = () => {
-    setLoading(true);
-    deleteInfo(id).then(() => {
-      setLoading(false);
+    showConfirm('آیا عملیات انجام شود؟', () => {
+      setLoading(true);
+      deleteInfo(id).then(() => {
+        setLoading(false);
+      });
     });
   };
   return (

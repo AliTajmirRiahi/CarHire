@@ -19,7 +19,7 @@ $(function () {
           .children('.OpenIcon')
           .addClass('CloseIcon')
           .removeClass('OpenIcon');
-        // cE.siblings('li').children('.sm-subMenu').slideUp();
+        // cE.siblings('li').children('.sub-menu').slideUp();
         // cE.siblings('li').removeClass('openSub');
         // cE.siblings('li').find('li').removeClass('openSub');
         // cE.siblings('li').find('.sm-subMenu').slideUp();

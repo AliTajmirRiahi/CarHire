@@ -230,8 +230,10 @@ ul.top-menu > li > .logout {
   width: 230px;
   height: 100%;
   background: #2f323a;
-  /* position: fixed;
-  z-index: 1; */
+  overflow: hidden;
+  outline: none;
+  position: fixed;
+  z-index: 1;
 }
 
 #sidebar h5 {
@@ -285,7 +287,15 @@ ul.sidebar-menu li ul.sub {
 
 ul.sidebar-menu {
   margin-top: 75px;
-  min-height: 1000px;
+  height: 600px;
+  overflow: auto;
+}
+ul.sidebar-menu::-webkit-scrollbar {
+  display: none;
+}
+
+ul.sidebar-menu {
+  -ms-overflow-style: none;
 }
 
 #sidebar > ul > li > ul.sub {

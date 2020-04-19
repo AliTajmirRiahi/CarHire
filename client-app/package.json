@@ -26,6 +26,7 @@
     "react": "^16.13.1",
     "react-bootstrap": "^1.0.0",
     "react-chartjs-2": "^2.9.0",
+    "react-confirm-alert": "^2.6.1",
     "react-dom": "^16.13.1",
     "react-final-form": "^6.4.0",
     "react-persian-datepicker": "^3.0.2",
