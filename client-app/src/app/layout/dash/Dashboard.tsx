@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react';
 import DashChart from './DashChart';
-import BankList from '../../../components/banks/BankList';
 
 const Dashboard = () => {
   return (

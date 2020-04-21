@@ -13,13 +13,12 @@ using Nelibur.ObjectMapper;
 
 namespace Application.BasiesInfo
 {
-    public class Delete
+    public class MultiDelete
     {
         public class Command : IRequest
         {
-            public Guid Id { get; set; }
+            public string IdList { get; set; }
         }
-
 
         public class Handler : IRequestHandler<Command>
         {
@@ -32,17 +31,22 @@ namespace Application.BasiesInfo
 
             public async Task<Unit> Handle(Command request, CancellationToken cancellationToken)
             {
-                var current = _context.BasiesInfo.FirstOrDefault(p => p.Id == request.Id);
-                if (current == null)
-                    throw new RestException(HttpStatusCode.BadRequest, new { MSG = "مورد پیدا نشد" });
-
-                if (!current.CanDelete)
-                    throw new RestException(HttpStatusCode.BadRequest, new { MSG = "امکان حذف این مورد وجود ندارد" });
-
-                _context.BasiesInfo.Remove(current);
-
+                var Splited = request.IdList.Split(',').ToList();
+                var basies = _context.BasiesInfo.Where(p => Splited.Contains(p.Id.ToString())).ToList();
+                var Msg = "";
+                // List<string> errors = new List<string>();
+                foreach (var baseInfo in basies)
+                {
+                    if (baseInfo.CanDelete)
+                        _context.BasiesInfo.Remove(baseInfo);
+                    else
+                        Msg += "امکان حذف \"" + baseInfo.Value + "\" نیست \r\n";
+                }
                 var res = await _context.SaveChangesAsync() > 0;
-                if (res) return Unit.Value;
+
+                if (Msg != "")
+                    throw new RestException(HttpStatusCode.BadRequest, new { MSG = Msg });
+                else return Unit.Value;
 
                 throw new Exception("Problem saving changes");
             }

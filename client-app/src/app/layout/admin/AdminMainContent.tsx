@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import Dashboard from '../dash/Dashboard';
-import BankList from '../../../components/banks/BankList';
+import BaseList from '../../../components/baseInfo/BaseList';
 import { Switch, Route } from 'react-router-dom';
 import AnimationGradient from '../../../components/preloader/AnimationGradient';
 import { RootStoreContext } from '../../stores/rootStore';
@@ -17,7 +17,25 @@ const AdminMainContent = () => {
           <div className='art-divTable'>
             <Switch>
               <Route exact path='/dashboard' component={Dashboard} />
-              <Route exact path='/dashboard/BankList' component={BankList} />
+              <Route
+                exact
+                path='/dashboard/BankList'
+                render={() => <BaseList type='Bank' typeName='بانک' />}
+              />
+              <Route
+                exact
+                path='/dashboard/InsuranceType'
+                render={() => (
+                  <BaseList type='InsuranceType' typeName='انواع بیمه' />
+                )}
+              />
+              <Route
+                exact
+                path='/dashboard/InsuranceCompany'
+                render={() => (
+                  <BaseList type='InsuranceCompany' typeName='شرکت بیمه' />
+                )}
+              />
             </Switch>
           </div>
         )}

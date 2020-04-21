@@ -4,7 +4,12 @@ namespace Domain
 {
     public class BaseInfo
     {
+        public BaseInfo()
+        {
+            CanDelete = true;
+        }
         public Guid Id { get; set; }
         public string Value { get; set; }
+        public bool CanDelete { get; set; }
     }
 }

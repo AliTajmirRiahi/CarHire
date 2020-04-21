@@ -16,6 +16,8 @@ namespace Application
             TinyMapper.Bind<Application.BasiesInfo.Update.Command, Domain.BaseInfo>();
             TinyMapper.Bind<Application.BasiesInfo.Create.Query, Domain.BaseInfo>();
             TinyMapper.Bind<Application.BasiesInfo.Create.Query, Domain.Bank>();
+            TinyMapper.Bind<Application.BasiesInfo.Create.Query, Domain.InsuranceType>();
+            TinyMapper.Bind<Application.BasiesInfo.Create.Query, Domain.InsuranceCompany>();
         }
     }
 }

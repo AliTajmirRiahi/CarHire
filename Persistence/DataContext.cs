@@ -12,6 +12,8 @@ namespace Persistence
         }
         public DbSet<BaseInfo> BasiesInfo { get; set; }
         public DbSet<Bank> Banks { get; set; }
+        public DbSet<InsuranceType> InsuranceTypes { get; set; }
+        public DbSet<InsuranceCompany> InsuranceCompanies { get; set; }
         public DbSet<Renter> Renters { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

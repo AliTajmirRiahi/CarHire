@@ -105,7 +105,13 @@ const AdminRightPanel = () => {
                   </a>
                 </li>
                 <li className='sub-menu '>
-                  <a href='#/'>
+                  <a href='/dashboard/InsuranceType'>
+                    <i className='fa fa-building' aria-hidden='true'></i>
+                    <span>انواع بیمه</span>
+                  </a>
+                </li>
+                <li className='sub-menu '>
+                  <a href='/dashboard/InsuranceCompany'>
                     <i className='fa fa-building' aria-hidden='true'></i>
                     <span>شرکت های بیمه</span>
                   </a>

@@ -45,5 +45,11 @@ namespace API.Controllers
         {
             return await Mediator.Send(new Delete.Command() { Id = id });
         }
+        [HttpDelete("MultiDelete/{idList}")]
+        [AllowAnonymous]
+        public async Task<ActionResult<Unit>> MultiDelete(string idList)
+        {
+            return await Mediator.Send(new MultiDelete.Command() { IdList = idList });
+        }
     }
 }

@@ -3,6 +3,7 @@ import { observable, action, runInAction } from 'mobx';
 import { IBaseInfo } from '../models/baseInfo';
 import agent from '../api/agent';
 import { toast } from 'react-toastify';
+import { ArrayOfAny } from '../models/global';
 
 export default class BaseInfoStore {
   rootStore: RootStore;
@@ -46,7 +47,7 @@ export default class BaseInfoStore {
     try {
       const newBase = await agent.BaseInfo.create(type, values);
       runInAction(() => {
-        this.BasiesInfo = [{ ...this.BasiesInfo }, newBase];
+        this.BasiesInfo?.push(newBase);
       });
       toast('عملیات با موفقیت انجام شد');
       this.rootStore.modalStore.closeModal();
@@ -56,7 +57,19 @@ export default class BaseInfoStore {
     try {
       await agent.BaseInfo.delete(id);
       runInAction(() => {
-        this.BasiesInfo = this.BasiesInfo?.filter((p) => p.id != id);
+        this.BasiesInfo = this.BasiesInfo?.filter((p) => p.id !== id);
+      });
+      toast('عملیات با موفقیت انجام شد');
+      this.rootStore.modalStore.closeModal();
+    } catch (error) {}
+  };
+  @action deleteMultiInfo = async (idList: string[]) => {
+    try {
+      await agent.BaseInfo.multiDelete(idList);
+      runInAction(() => {
+        this.BasiesInfo = this.BasiesInfo?.filter(
+          (p) => !idList.some((k) => k === p.id)
+        );
       });
       toast('عملیات با موفقیت انجام شد');
       this.rootStore.modalStore.closeModal();

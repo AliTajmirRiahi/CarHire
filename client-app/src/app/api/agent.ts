@@ -4,6 +4,7 @@ import { IRenter } from '../models/renter';
 import { history } from '../..';
 import { toast } from 'react-toastify';
 import { IBaseInfo } from '../models/baseInfo';
+import { ArrayOfAny } from '../models/global';
 // axios.defaults.baseURL = process.env.REACT_APP_API_URL;
 axios.defaults.baseURL = 'http://localhost:5000/api';
 const responseBody = (response: AxiosResponse) => response.data;
@@ -63,6 +64,8 @@ const requests = {
   post: (url: string, body: {}) => axios.post(url, body).then(responseBody),
   put: (url: string, body: {}) => axios.put(url, body).then(responseBody),
   del: (url: string) => axios.delete(url).then(responseBody),
+  delMulti: (url: string, body: {}) =>
+    axios.delete(url, body).then(responseBody),
   postForm: (url: string, file: Blob) => {
     let formData = new FormData();
     formData.append('File', file);
@@ -99,9 +102,11 @@ const BaseInfo = {
   current: (id: string): Promise<IBaseInfo> =>
     requests.get(`/BaseInfo/current/${id}`),
   update: (values: IBaseInfo) => requests.put(`/BaseInfo/${values.id}`, values),
-  create: (type: string, values: IBaseInfo) =>
+  create: (type: string, values: IBaseInfo): Promise<IBaseInfo> =>
     requests.post(`/BaseInfo/${type}`, values),
   delete: (id: string) => requests.del(`/BaseInfo/${id}`),
+  multiDelete: (idlist: string[]) =>
+    requests.del(`/BaseInfo/MultiDelete/${idlist}`),
 };
 
 export default { Renter, User, BaseInfo };

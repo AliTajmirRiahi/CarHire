@@ -1,41 +1,43 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState, useRef } from 'react';
 import { Form, Field } from 'react-final-form';
 import TextInput from '../formField/TextInput';
-import { Link } from 'react-router-dom';
 import { RootStoreContext } from '../../app/stores/rootStore';
 import { combineValidators, isRequired } from 'revalidate';
 import { observer } from 'mobx-react-lite';
 import { IBaseInfo, BaseInfo } from '../../app/models/baseInfo';
 
-const validate = combineValidators({
-  value: isRequired({
-    message: 'نام بانک را وارد کنید',
-  }),
-});
-
 interface IProps {
   id: string;
+  type: string;
+  typeName: string;
 }
 
-const BankForm: React.FC<IProps> = ({ id = '' }) => {
-  const [bank, setBank] = useState(new BaseInfo());
+const BaseForm: React.FC<IProps> = ({ id = '', type, typeName }) => {
+  const [base, setBase] = useState(new BaseInfo());
   const rootStore = useContext(RootStoreContext);
   const { setLoading } = rootStore.commonStore;
   const { getCurrent, updateInfo, createInfo } = rootStore.baseInfoStore;
   const { closeModal } = rootStore.modalStore;
 
+  const msg = useRef(`لطفا ${typeName} را وارد کنید`);
+  const validate = combineValidators({
+    value: isRequired({
+      message: msg.current,
+    }),
+  });
+
   useEffect(() => {
-    if (bank.id === undefined && id !== '') {
+    if (base.id === undefined && id !== '') {
       getCurrent(id).then((base) => {
-        setBank(new BaseInfo(base));
+        setBase(new BaseInfo(base));
       });
     }
-  }, [getCurrent, bank, id]);
+  }, [getCurrent, base, id]);
 
   const onSubmit = (values: IBaseInfo) => {
     setLoading(true);
-    if (values.id == undefined)
-      createInfo('Bank', values).then(() => {
+    if (values.id === undefined)
+      createInfo(type, values).then(() => {
         setLoading(false);
       });
     else
@@ -46,17 +48,17 @@ const BankForm: React.FC<IProps> = ({ id = '' }) => {
   return (
     <Form
       validate={validate}
-      initialValues={bank}
+      initialValues={base}
       onSubmit={onSubmit}
       render={({ handleSubmit, pristine }) => (
         <form onSubmit={handleSubmit}>
           <Field
             name='value'
-            value={bank.value}
+            value={base.value}
             myType='text'
             component={TextInput}
             hSpace='mb-2'
-            placeholder='بانک'
+            placeholder={typeName}
           />
           <div className='mt-3'>
             <button
@@ -80,4 +82,4 @@ const BankForm: React.FC<IProps> = ({ id = '' }) => {
   );
 };
 
-export default observer(BankForm);
+export default observer(BaseForm);
