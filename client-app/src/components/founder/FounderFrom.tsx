@@ -47,7 +47,7 @@ const FounderFrom = () => {
         </a>
       </p>
       <h5 className='centered art-UserName' style={{ fontSize: 20 }}>
-        {sfounder.rLastName != ''
+        {sfounder && sfounder.rLastName != ''
           ? sfounder.rFirstName + ' ' + sfounder.rLastName
           : user?.username}
       </h5>
@@ -55,7 +55,7 @@ const FounderFrom = () => {
         validate={validate}
         initialValues={sfounder}
         onSubmit={onSubmit}
-        render={({ handleSubmit }) => (
+        render={({ handleSubmit, pristine }) => (
           <form onSubmit={handleSubmit}>
             <Row>
               <Col sm={12}>
@@ -112,26 +112,14 @@ const FounderFrom = () => {
             </Row>
 
             <div className='mt-3'>
-              <button type='submit' className='btn btn-primary w-100'>
+              <button
+                type='submit'
+                className='btn animated-button thar-three w-100'
+                disabled={pristine}
+              >
                 ثبت
               </button>
             </div>
-            {/* <div className='mt-3 text-center'>
-            <Link to='#' className='art-font13'>
-              ورود با پیامک
-            </Link>
-            <span className='art-bar'>|</span>
-            <Link to='#' className='art-font13'>
-              فراموشی رمز
-            </Link>
-          </div>
-          <div className='mt-3 text-center art-font10'>
-            کاربر جدید هستید؟
-            <Link to='/register' className='art-font10 art-registerLink'>
-              ثبت‌ نام در آرتـــا
-            </Link>
-          </div>
-           */}
           </form>
         )}
       />

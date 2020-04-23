@@ -5,6 +5,7 @@ import { observer } from 'mobx-react-lite';
 const AdminRightPanel = () => {
   const rootContext = useContext(RootStoreContext);
   const { user } = rootContext.userStore;
+  const { founder } = rootContext.founderStore;
   return (
     <div className='col-sm-auto'>
       <aside>
@@ -22,7 +23,11 @@ const AdminRightPanel = () => {
                 />
               </a>
             </p>
-            <h5 className='centered art-UserName'>{user?.username}</h5>
+            <h5 className='centered art-UserName'>
+              {founder && founder.rLastName != ''
+                ? founder.rFirstName + ' ' + founder.rLastName
+                : user?.username}
+            </h5>
             <li className='mt'>
               <a className='active' href='#/'>
                 <i className='icon icon-performance'></i>
