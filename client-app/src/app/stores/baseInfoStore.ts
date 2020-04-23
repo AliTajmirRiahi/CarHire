@@ -3,7 +3,6 @@ import { observable, action, runInAction } from 'mobx';
 import { IBaseInfo } from '../models/baseInfo';
 import agent from '../api/agent';
 import { toast } from 'react-toastify';
-import { ArrayOfAny } from '../models/global';
 
 export default class BaseInfoStore {
   rootStore: RootStore;
@@ -14,9 +13,17 @@ export default class BaseInfoStore {
   @observable BasiesInfo: IBaseInfo[] | undefined = undefined;
   @observable current: IBaseInfo | null = null;
 
-  @action getBasiesInfo = async (type: string) => {
+  @action getBasiesInfo = async (
+    type: string,
+    numInPage: number,
+    pageNumber: number
+  ) => {
     try {
-      const BasiesInfo = await agent.BaseInfo.details(type);
+      const BasiesInfo = await agent.BaseInfo.details(
+        type,
+        numInPage,
+        pageNumber
+      );
       runInAction(() => {
         this.BasiesInfo = BasiesInfo;
       });
@@ -73,6 +80,14 @@ export default class BaseInfoStore {
       });
       toast('عملیات با موفقیت انجام شد');
       this.rootStore.modalStore.closeModal();
+    } catch (error) {}
+  };
+  @action getPages = async (type: string, numInPage: number) => {
+    try {
+      var pages = await agent.BaseInfo.pages(type, numInPage);
+      runInAction(() => {
+        this.rootStore.pageStore.setPages(pages);
+      });
     } catch (error) {}
   };
 }

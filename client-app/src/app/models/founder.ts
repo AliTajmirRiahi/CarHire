@@ -1,6 +1,7 @@
-export interface IRenter {
+export interface IFounder {
   Id: string;
-  rName: string;
+  rFirstName: string;
+  rLastName: string;
   rSub: string;
   rTitle: string;
   rContactMail: string;

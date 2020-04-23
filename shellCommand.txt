@@ -19,6 +19,7 @@ npm i materialize-css
 npm i -D json-server concurrently
 
 dotnet ef migrations add InitialCreate -p Persistence/ -s API/
+dotnet ef database update --اسم مایگریشن-- -p Persistence/ -s API/ (برای revert)
 
 dotnet watch -p API run  
 

@@ -70,6 +70,8 @@ namespace Application.User
                 else
                     appUser.Email = request.EmailOrPhoneNumber;
                 appUser.UserName = appUser.Email;
+                Domain.Founder newFounder = new Domain.Founder();
+                newFounder.AppUser = appUser;
                 var res = await _userManager.CreateAsync(appUser, request.Password);
                 if (res.Succeeded)
                 {

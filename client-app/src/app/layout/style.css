@@ -353,6 +353,7 @@ input#txtDashSearch {
   padding: 5px;
   box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.475) !important;
   border-radius: 20px;
+  margin-bottom: 20px;
 }
 .art-lineheight40 {
   line-height: 40px;
@@ -430,4 +431,22 @@ input#txtDashSearch {
 }
 .react-confirm-alert-overlay {
   background: rgba(0, 0, 0, 0.65) !important;
+}
+
+.posSticky {
+  position: -webkit-sticky !important;
+  position: sticky !important;
+  z-index: 1;
+}
+.art-spanSticky {
+  top: 60px;
+  background-color: #eaeaea;
+  display: block;
+  padding: 10px;
+  border-radius: 0px 0px 15px 15px;
+  width: 99%;
+  margin: 5px;
+}
+.art-spanSticky .dropdown .dropdown-toggle::after {
+  display: none;
 }

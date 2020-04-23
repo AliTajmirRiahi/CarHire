@@ -35,7 +35,7 @@ namespace Application.Renters
 
             public async Task<Unit> Handle(Command request, CancellationToken cancellationToken)
             {
-                var renter = await _context.Renters.FindAsync(request.Id);
+                var renter = await _context.Founders.FindAsync(request.Id);
                 if (renter == null)
                     throw new RestException(HttpStatusCode.NotFound, new { MSG = "مالک پیدا نشد" });
 

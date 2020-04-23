@@ -5,6 +5,7 @@ import { createContext } from 'react';
 import { configure } from 'mobx';
 import ModalStore from './modalStore';
 import BaseInfoStore from './baseInfoStore';
+import PageStore from './pageStore';
 
 configure({ enforceActions: 'always' });
 
@@ -14,6 +15,7 @@ export class RootStore {
   commonStore: CommonStore;
   modalStore: ModalStore;
   baseInfoStore: BaseInfoStore;
+  pageStore: PageStore;
 
   constructor() {
     this.renterStore = new RenterStore(this);
@@ -21,6 +23,7 @@ export class RootStore {
     this.commonStore = new CommonStore(this);
     this.modalStore = new ModalStore(this);
     this.baseInfoStore = new BaseInfoStore(this);
+    this.pageStore = new PageStore(this);
   }
 }
 

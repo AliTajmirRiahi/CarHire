@@ -1,7 +1,8 @@
+import { IFounder } from './founder';
 export interface IUser {
-  displayName: string;
   token: string;
   username: string;
+  founder: IFounder;
   image?: string;
 }
 

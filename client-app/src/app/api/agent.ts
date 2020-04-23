@@ -1,10 +1,9 @@
 import { IUser, IUserFormValues } from './../models/user';
 import axios, { AxiosResponse } from 'axios';
-import { IRenter } from '../models/renter';
+// import { IFounder } from '../models/founder';
 import { history } from '../..';
 import { toast } from 'react-toastify';
 import { IBaseInfo } from '../models/baseInfo';
-import { ArrayOfAny } from '../models/global';
 // axios.defaults.baseURL = process.env.REACT_APP_API_URL;
 axios.defaults.baseURL = 'http://localhost:5000/api';
 const responseBody = (response: AxiosResponse) => response.data;
@@ -77,16 +76,17 @@ const requests = {
   },
 };
 
-const Renter = {
-  create: (renter: IRenter) => requests.post('/renter', renter),
-  delete: (id: string) => requests.del(`/renter/${id}`),
-  //   list: (params: URLSearchParams): Promise<IActivitiesEnvelope> =>
-  //     axios.get('/activities', {params: params}).then(responseBody),
-  details: (id: string) => requests.get(`/renter/${id}`),
-  update: (renter: IRenter) => requests.put(`/renter/${renter.Id}`, renter),
-  attend: (id: string) => requests.post(`/renter/${id}/attend`, {}),
-  unattend: (id: string) => requests.del(`/renter/${id}/attend`),
-};
+// const Renter = {
+//   create: (renter: IRenter) => requests.post('/renter', renter),
+//   delete: (id: string) => requests.del(`/renter/${id}`),
+//   //   list: (params: URLSearchParams): Promise<IActivitiesEnvelope> =>
+//   //     axios.get('/activities', {params: params}).then(responseBody),
+//   details: (id: string, numInPage: number) =>
+//     requests.get(`/renter/${id}/${numInPage}`),
+//   update: (renter: IRenter) => requests.put(`/renter/${renter.Id}`, renter),
+//   attend: (id: string) => requests.post(`/renter/${id}/attend`, {}),
+//   unattend: (id: string) => requests.del(`/renter/${id}/attend`),
+// };
 
 const User = {
   current: (): Promise<IUser> => requests.get('/user'),
@@ -97,8 +97,14 @@ const User = {
 };
 
 const BaseInfo = {
-  details: (type: string): Promise<IBaseInfo[]> =>
-    requests.get(`/BaseInfo/${type}`),
+  details: (
+    type: string,
+    numInPage: number,
+    pageNumber: number
+  ): Promise<IBaseInfo[]> =>
+    requests.get(`/BaseInfo/${type}/${numInPage}/${pageNumber}`),
+  pages: (type: string, numInPage: number): Promise<number> =>
+    requests.get(`/BaseInfo/pages/${type}/${numInPage}`),
   current: (id: string): Promise<IBaseInfo> =>
     requests.get(`/BaseInfo/current/${id}`),
   update: (values: IBaseInfo) => requests.put(`/BaseInfo/${values.id}`, values),
@@ -109,4 +115,4 @@ const BaseInfo = {
     requests.del(`/BaseInfo/MultiDelete/${idlist}`),
 };
 
-export default { Renter, User, BaseInfo };
+export default { User, BaseInfo };

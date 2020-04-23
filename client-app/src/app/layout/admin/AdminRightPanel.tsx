@@ -25,6 +25,12 @@ const AdminRightPanel = () => {
                 <span>میزکار</span>
               </a>
             </li>
+            <li className='mt'>
+              <a className='active' href='#/'>
+                <i className='icon icon-performance'></i>
+                <span>پروفایل</span>
+              </a>
+            </li>
             <li className='sub-menu '>
               <a href='#/' className='hasSubmenu'>
                 <i className='icon icon-rial-1'></i>

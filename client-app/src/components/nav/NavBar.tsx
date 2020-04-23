@@ -2,7 +2,7 @@ import React, { Fragment, useContext } from 'react';
 import { RootStoreContext } from '../../app/stores/rootStore';
 import { observer } from 'mobx-react-lite';
 import { Nav, NavDropdown, Container, Navbar, Row, Col } from 'react-bootstrap';
-import Linear from '../preloader/Linear';
+// import Linear from '../preloader/Linear';
 import LoginForm from '../user/LoginForm';
 const NavBar = () => {
   const rootStore = useContext(RootStoreContext);
