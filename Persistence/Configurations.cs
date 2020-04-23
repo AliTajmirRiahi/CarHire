@@ -18,4 +18,13 @@ namespace Persistence.Configurations
         {
         }
     }
+
+    public class FounderConfig : IEntityTypeConfiguration<Founder>
+    {
+        public void Configure(EntityTypeBuilder<Founder> builder)
+        {
+            builder.Ignore(p => p.rExpireJalali);
+            builder.Ignore(p => p.rCreateJalali);
+        }
+    }
 }

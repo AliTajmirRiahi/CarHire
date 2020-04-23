@@ -134,7 +134,7 @@ a.waves-effect .waves-ripple {
 
 body {
   margin: 0;
-  font-family: 'IRANSansWeb' !important;
+  font-family: 'IRANSansFaNum' !important;
   background-color: rgb(234, 234, 234) !important;
   direction: rtl;
   overflow-x: hidden;
@@ -351,7 +351,7 @@ input#txtDashSearch {
 }
 .art-divTable {
   padding: 5px;
-  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.475) !important;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.475) !important;
   border-radius: 20px;
   margin-bottom: 20px;
 }
@@ -449,4 +449,31 @@ input#txtDashSearch {
 }
 .art-spanSticky .dropdown .dropdown-toggle::after {
   display: none;
+}
+.art-UserName {
+  font-size: 12px;
+  padding: 7px;
+  border: 1px solid rgb(78, 205, 196);
+  display: inline-block;
+  border-radius: 5px;
+  box-shadow: 0 1px 3rem rgb(78, 205, 196);
+}
+
+.art-formDiv {
+  margin: auto;
+  width: 50%;
+  padding: 20px;
+  text-align: center;
+}
+.form-control:focus {
+  border-color: #4ecdc4 !important;
+  box-shadow: 0 0 1rem 0.2rem rgba(78, 205, 196, 0.41) !important;
+}
+
+.art-desc {
+  text-align: center;
+}
+.art-desc label {
+  padding: 6px;
+  margin: 0px;
 }

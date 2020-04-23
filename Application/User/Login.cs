@@ -10,6 +10,9 @@ using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Persistence;
+using AutoMapper;
+using Application.Founders;
+
 namespace Application.User
 {
     public class Login
@@ -32,8 +35,10 @@ namespace Application.User
             private readonly UserManager<AppUser> _userManager;
             private readonly SignInManager<AppUser> _signInManager;
             private readonly IJwtGenerator _jwtGenerator;
-            public Handler(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, IJwtGenerator jwtGenerator)
+            private readonly IMapper _mapper;
+            public Handler(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, IJwtGenerator jwtGenerator, IMapper mapper)
             {
+                _mapper = mapper;
                 _jwtGenerator = jwtGenerator;
                 _signInManager = signInManager;
                 _userManager = userManager;
@@ -55,6 +60,7 @@ namespace Application.User
                     return new User
                     {
                         Username = user.UserName,
+                        Founder = _mapper.Map<FounderDto>(user.Founder),
                         Token = _jwtGenerator.CreateToken(user),
                         Image = null,
                     };

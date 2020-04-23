@@ -1,27 +1,22 @@
-
-using Nelibur.ObjectMapper;
+using AutoMapper;
 
 namespace Application
 {
-    public class MapperConfig
+    public class MapperConfig : Profile
     {
-        public static void Config()
+        public MapperConfig()
         {
-            TinyMapper.Bind<Application.Renters.Edit.Command, Domain.Founder>();
-            TinyMapper.Bind<Application.User.Register.Command, Domain.AppUser>();
-            TinyMapper.Bind<Domain.AppUser, Application.User.User>(config =>
-            {
-                config.Bind(source => source.UserName, target => target.Username);
-            });
-            TinyMapper.Bind<Application.BasiesInfo.Update.Command, Domain.BaseInfo>();
-            TinyMapper.Bind<Application.BasiesInfo.Create.Query, Domain.BaseInfo>();
-            TinyMapper.Bind<Application.BasiesInfo.Create.Query, Domain.Bank>();
-            TinyMapper.Bind<Application.BasiesInfo.Create.Query, Domain.InsuranceType>();
-            TinyMapper.Bind<Application.BasiesInfo.Create.Query, Domain.InsuranceCompany>();
+            CreateMap<Application.Founders.Edit.Command, Domain.Founder>();
+            CreateMap<Application.User.Register.Command, Domain.AppUser>();
+            CreateMap<Domain.AppUser, Application.User.User>().ForMember(t => t.Username, o => o.MapFrom(s => s.UserName));
+            CreateMap<Application.BasiesInfo.Update.Command, Domain.BaseInfo>();
+            CreateMap<Application.BasiesInfo.Create.Query, Domain.BaseInfo>();
+            CreateMap<Application.BasiesInfo.Create.Query, Domain.Bank>();
+            CreateMap<Application.BasiesInfo.Create.Query, Domain.InsuranceType>();
+            CreateMap<Application.BasiesInfo.Create.Query, Domain.InsuranceCompany>();
 
 
-            TinyMapper.Bind<Domain.Founder, Application.Founders.FounderDto>();
-
+            CreateMap<Domain.Founder, Application.Founders.FounderDto>();
         }
     }
 }

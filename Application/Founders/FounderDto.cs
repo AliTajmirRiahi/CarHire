@@ -13,5 +13,7 @@ namespace Application.Founders
         public bool rEnable { get; set; }
         public DateTime rCreate { get; set; }
         public DateTime rExpire { get; set; }
+        public string rCreateJalali { get; set; }
+        public string rExpireJalali { get; set; }
     }
 }

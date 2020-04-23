@@ -9,7 +9,7 @@ using Persistence;
 using FluentValidation;
 using Microsoft.AspNetCore.Identity;
 using Application.Infrastructure.Interfaces;
-using Nelibur.ObjectMapper;
+using AutoMapper;
 
 namespace Application.User
 {
@@ -21,7 +21,6 @@ namespace Application.User
             public QueryValidator()
             {
 
-                // RuleFor(p => p.).NotEmpty();
             }
         }
 
@@ -30,18 +29,19 @@ namespace Application.User
             private readonly UserManager<AppUser> _userManager;
             private readonly IJwtGenerator _jwtGenerator;
             private readonly IUserAccessor _userAccessor;
-            public Handler(UserManager<AppUser> userManager, IJwtGenerator jwtGenerator, IUserAccessor userAccessor)
+            private readonly IMapper _mapper;
+            public Handler(UserManager<AppUser> userManager, IJwtGenerator jwtGenerator, IUserAccessor userAccessor, IMapper mapper)
             {
+                _mapper = mapper;
                 _userAccessor = userAccessor;
                 _jwtGenerator = jwtGenerator;
                 _userManager = userManager;
-                MapperConfig.Config();
             }
 
             public async Task<User> Handle(Query request, CancellationToken cancellationToken)
             {
                 var appuser = await _userManager.FindByNameAsync(_userAccessor.GetCurrentUsername());
-                var user = TinyMapper.Map<User>(appuser);
+                var user = _mapper.Map<User>(appuser);
                 user.Token = _jwtGenerator.CreateToken(appuser);
                 return user;
             }

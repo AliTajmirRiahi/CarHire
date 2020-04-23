@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Persistence;
 using FluentValidation;
 using System.Net;
-using Nelibur.ObjectMapper;
+using AutoMapper;
 
 namespace Application.BasiesInfo
 {
@@ -33,9 +33,10 @@ namespace Application.BasiesInfo
         public class Handler : IRequestHandler<Command>
         {
             private readonly DataContext _context;
-            public Handler(DataContext context)
+            private readonly IMapper _mapper;
+            public Handler(DataContext context, IMapper mapper)
             {
-                MapperConfig.Config();
+                _mapper = mapper;
                 _context = context;
             }
 
@@ -45,7 +46,7 @@ namespace Application.BasiesInfo
                 if (current == null)
                     throw new RestException(HttpStatusCode.BadRequest, new { MSG = "مورد پیدا نشد" });
 
-                TinyMapper.Map(request, current);
+                _mapper.Map(request, current);
 
                 var res = await _context.SaveChangesAsync() > 0;
                 if (res) return Unit.Value;

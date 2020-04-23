@@ -29,12 +29,15 @@ const TextInput: React.FC<IProps> = ({
             ></i>
           )}
         </div>
-        <input
-          {...input}
-          placeholder={placeholder}
-          type={myType}
-          style={{ width: inputWidth }}
-        />
+        <div style={{ width: inputWidth }}>
+          <input
+            className='form-control'
+            {...input}
+            placeholder={placeholder}
+            type={myType}
+            style={{ width: inputWidth }}
+          />
+        </div>
         {touched && error && (
           <span
             className={`text-danger art-font13 mt-1 ${

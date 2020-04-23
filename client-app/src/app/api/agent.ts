@@ -1,3 +1,4 @@
+import { IFounder } from './../models/founder';
 import { IUser, IUserFormValues } from './../models/user';
 import axios, { AxiosResponse } from 'axios';
 // import { IFounder } from '../models/founder';
@@ -76,17 +77,10 @@ const requests = {
   },
 };
 
-// const Renter = {
-//   create: (renter: IRenter) => requests.post('/renter', renter),
-//   delete: (id: string) => requests.del(`/renter/${id}`),
-//   //   list: (params: URLSearchParams): Promise<IActivitiesEnvelope> =>
-//   //     axios.get('/activities', {params: params}).then(responseBody),
-//   details: (id: string, numInPage: number) =>
-//     requests.get(`/renter/${id}/${numInPage}`),
-//   update: (renter: IRenter) => requests.put(`/renter/${renter.Id}`, renter),
-//   attend: (id: string) => requests.post(`/renter/${id}/attend`, {}),
-//   unattend: (id: string) => requests.del(`/renter/${id}/attend`),
-// };
+const Founder = {
+  update: (founder: IFounder) =>
+    requests.put(`/founder/${founder.id}`, founder),
+};
 
 const User = {
   current: (): Promise<IUser> => requests.get('/user'),
@@ -115,4 +109,4 @@ const BaseInfo = {
     requests.del(`/BaseInfo/MultiDelete/${idlist}`),
 };
 
-export default { User, BaseInfo };
+export default { User, BaseInfo, Founder };

@@ -5,6 +5,7 @@ import { Switch, Route } from 'react-router-dom';
 import AnimationGradient from '../../../components/preloader/AnimationGradient';
 import { RootStoreContext } from '../../stores/rootStore';
 import { observer } from 'mobx-react-lite';
+import Founder from '../../../components/founder/Founder';
 const AdminMainContent = () => {
   const rootContext = useContext(RootStoreContext);
   const { loading } = rootContext.commonStore;
@@ -35,6 +36,11 @@ const AdminMainContent = () => {
                 render={() => (
                   <BaseList type='InsuranceCompany' typeName='شرکت بیمه' />
                 )}
+              />
+              <Route
+                exact
+                path='/dashboard/Founder'
+                render={() => <Founder />}
               />
             </Switch>
           </div>

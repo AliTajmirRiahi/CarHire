@@ -1,6 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { RootStoreContext } from '../../stores/rootStore';
+import { observer } from 'mobx-react-lite';
 
 const AdminRightPanel = () => {
+  const rootContext = useContext(RootStoreContext);
+  const { user } = rootContext.userStore;
   return (
     <div className='col-sm-auto'>
       <aside>
@@ -9,7 +13,7 @@ const AdminRightPanel = () => {
           {/*  sidebar menu start*/}
           <ul className='sidebar-menu' id='nav-accordion'>
             <p className='centered'>
-              <a href='profile.html'>
+              <a href='/dashboard/Founder'>
                 <img
                   alt=''
                   src='/assets/user.png'
@@ -18,19 +22,14 @@ const AdminRightPanel = () => {
                 />
               </a>
             </p>
-            <h5 className='centered'>Sam Soffes</h5>
+            <h5 className='centered art-UserName'>{user?.username}</h5>
             <li className='mt'>
               <a className='active' href='#/'>
                 <i className='icon icon-performance'></i>
                 <span>میزکار</span>
               </a>
             </li>
-            <li className='mt'>
-              <a className='active' href='#/'>
-                <i className='icon icon-performance'></i>
-                <span>پروفایل</span>
-              </a>
-            </li>
+
             <li className='sub-menu '>
               <a href='#/' className='hasSubmenu'>
                 <i className='icon icon-rial-1'></i>
@@ -201,4 +200,4 @@ const AdminRightPanel = () => {
   );
 };
 
-export default AdminRightPanel;
+export default observer(AdminRightPanel);

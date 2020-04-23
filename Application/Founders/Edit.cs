@@ -6,40 +6,39 @@ using System.Threading.Tasks;
 using Domain;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using Nelibur.ObjectMapper;
 using Persistence;
-namespace Application.Renters
+using AutoMapper;
+
+namespace Application.Founders
 {
     public class Edit
     {
         public class Command : IRequest
         {
             public Guid Id { get; set; }
-            public string rName { get; set; }
-            public string rSub { get; set; }
+            public string rFirstName { get; set; }
+            public string rLastName { get; set; }
             public string rTitle { get; set; }
             public string rContactMail { get; set; }
-            public bool rEnable { get; set; }
-            public DateTime rCreate { get; set; }
-            public DateTime rExpire { get; set; }
         }
 
         public class Handler : IRequestHandler<Command>
         {
             private readonly DataContext _context;
-            public Handler(DataContext context)
+            private readonly IMapper _mapper;
+            public Handler(DataContext context, IMapper mapper)
             {
-                MapperConfig.Config();
+                _mapper = mapper;
                 _context = context;
             }
 
             public async Task<Unit> Handle(Command request, CancellationToken cancellationToken)
             {
-                var renter = await _context.Founders.FindAsync(request.Id);
-                if (renter == null)
+                var founder = await _context.Founders.FindAsync(request.Id);
+                if (founder == null)
                     throw new RestException(HttpStatusCode.NotFound, new { MSG = "مالک پیدا نشد" });
 
-                TinyMapper.Map(request, renter);
+                _mapper.Map(request, founder);
 
                 var res = await _context.SaveChangesAsync() > 0;
                 if (res) return Unit.Value;

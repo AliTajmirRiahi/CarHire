@@ -289,6 +289,7 @@ ul.sidebar-menu {
   margin-top: 75px;
   height: 600px;
   overflow: auto;
+  text-align: center;
 }
 ul.sidebar-menu::-webkit-scrollbar {
   display: none;

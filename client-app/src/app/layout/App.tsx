@@ -3,6 +3,7 @@ import '../../app/layout/style.css';
 import '../../app/layout/artaFont.css';
 import '../layout/css/checkbox.scss';
 import '../layout/css/pagination.css';
+import '../layout/iransans/css/iransans.css';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import { Route, withRouter, Switch } from 'react-router-dom';
 import RegisterForm from '../../components/user/RegisterForm';

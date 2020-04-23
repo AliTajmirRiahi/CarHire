@@ -9,7 +9,6 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Persistence;
 using FluentValidation;
-using Nelibur.ObjectMapper;
 
 namespace Application.BasiesInfo
 {
@@ -25,7 +24,6 @@ namespace Application.BasiesInfo
             private readonly DataContext _context;
             public Handler(DataContext context)
             {
-                MapperConfig.Config();
                 _context = context;
             }
 

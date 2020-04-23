@@ -14,11 +14,6 @@ namespace Persistence.Migrations
                 name: "DisplayName",
                 table: "AspNetUsers");
 
-            migrationBuilder.AddColumn<int>(
-                name: "FounderId",
-                table: "AspNetUsers",
-                nullable: true);
-
             migrationBuilder.CreateTable(
                 name: "Founders",
                 columns: table => new
@@ -57,10 +52,6 @@ namespace Persistence.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Founders");
-
-            migrationBuilder.DropColumn(
-                name: "FounderId",
-                table: "AspNetUsers");
 
             migrationBuilder.AddColumn<string>(
                 name: "DisplayName",

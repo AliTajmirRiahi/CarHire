@@ -10,8 +10,8 @@ using FluentValidation;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Nelibur.ObjectMapper;
 using Persistence;
+using AutoMapper;
 
 namespace Application.User
 {
@@ -40,12 +40,13 @@ namespace Application.User
             private readonly DataContext _context;
             private readonly UserManager<AppUser> _userManager;
             private readonly IJwtGenerator _jwtGenerator;
-            public Handler(DataContext context, UserManager<AppUser> userManager, IJwtGenerator jwtGenerator)
+            private readonly IMapper _mapper;
+            public Handler(DataContext context, UserManager<AppUser> userManager, IJwtGenerator jwtGenerator, IMapper mapper)
             {
+                _mapper = mapper;
                 _jwtGenerator = jwtGenerator;
                 _userManager = userManager;
                 _context = context;
-                MapperConfig.Config();
             }
 
             public async Task<User> Handle(Command request, CancellationToken cancellationToken)
@@ -61,7 +62,7 @@ namespace Application.User
                     throw new RestException(HttpStatusCode.BadRequest, new { MSG = "این ایمیل قبلا استفاده شده است" });
 
                 var appUser = new AppUser();
-                TinyMapper.Map(request, appUser);
+                _mapper.Map(request, appUser);
                 if (isPhone)
                 {
                     appUser.PhoneNumber = request.EmailOrPhoneNumber;
@@ -70,14 +71,21 @@ namespace Application.User
                 else
                     appUser.Email = request.EmailOrPhoneNumber;
                 appUser.UserName = appUser.Email;
-                Domain.Founder newFounder = new Domain.Founder();
-                newFounder.AppUser = appUser;
                 var res = await _userManager.CreateAsync(appUser, request.Password);
                 if (res.Succeeded)
                 {
-                    var newUser = TinyMapper.Map<User>(appUser);
-                    newUser.Token = _jwtGenerator.CreateToken(appUser);
-                    return newUser;
+                    Domain.Founder newFounder = new Domain.Founder();
+                    newFounder.AppUser = appUser;
+                    appUser.Founder = newFounder;
+                    _context.Founders.Add(newFounder);
+                    var isSave = await _context.SaveChangesAsync() > 0;
+                    if (isSave)
+                    {
+                        var newUser = _mapper.Map<User>(appUser);
+                        newUser.Token = _jwtGenerator.CreateToken(appUser);
+                        return newUser;
+                    }
+
                 }
 
                 throw new Exception("مشکل در ایجاد یوزر");

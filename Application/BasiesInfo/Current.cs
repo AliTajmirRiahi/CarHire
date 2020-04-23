@@ -30,7 +30,6 @@ namespace Application.BasiesInfo
             private readonly DataContext _context;
             public Handler(DataContext context)
             {
-                MapperConfig.Config();
                 _context = context;
             }
 

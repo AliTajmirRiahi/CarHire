@@ -9,8 +9,7 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Persistence;
 using FluentValidation;
-using Nelibur.ObjectMapper;
-
+using AutoMapper;
 namespace Application.BasiesInfo
 {
     public class Create
@@ -31,9 +30,10 @@ namespace Application.BasiesInfo
         public class Handler : IRequestHandler<Query, BaseInfo>
         {
             private readonly DataContext _context;
-            public Handler(DataContext context)
+            private readonly IMapper _mapper;
+            public Handler(DataContext context, IMapper mapper)
             {
-                MapperConfig.Config();
+                _mapper = mapper;
                 _context = context;
             }
 
@@ -43,7 +43,7 @@ namespace Application.BasiesInfo
                     throw new RestException(HttpStatusCode.BadRequest, new { MSG = "مورد وارد شده تکراری است" });
 
                 var BaseType = Type.GetType("Domain." + request.Type + ",Domain");
-                BaseInfo newBase = typeof(TinyMapper).GetMethod("Map", new[] { typeof(object) }).MakeGenericMethod(BaseType).Invoke(null, new object[] { request }) as BaseInfo;
+                BaseInfo newBase = _mapper.Map(request, request.GetType(), BaseType) as BaseInfo;
                 var BasiesInfo = _context.GetType().GetMethod("Set").MakeGenericMethod(BaseType).Invoke(_context, null);
                 BasiesInfo = BasiesInfo.GetType().GetMethod("Add").Invoke(BasiesInfo, new object[] { newBase });
 

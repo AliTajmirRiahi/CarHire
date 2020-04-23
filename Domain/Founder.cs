@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Util;
 
 namespace Domain
 {
@@ -9,14 +10,16 @@ namespace Domain
     {
         public Founder()
         {
-            this.rFirstName = "";
-            this.rLastName = "";
-            this.rSub = "";
-            this.rTitle = "";
-            this.rContactMail = "";
-            this.rEnable = true;
-            this.rCreate = DateTime.Now;
-            this.rExpire = DateTime.Now.AddMonths(1);
+            rFirstName = "";
+            rLastName = "";
+            rSub = "";
+            rTitle = "";
+            rContactMail = "";
+            rEnable = true;
+            rCreate = DateTime.Now;
+            rExpire = DateTime.Now.AddMonths(1);
+            _rCreateJalali = Utility.ConvertDateToPersian(rCreate);
+            _rExpireJalali = Utility.ConvertDateToPersian(rExpire);
         }
 
         public Guid Id { get; set; }
@@ -28,6 +31,24 @@ namespace Domain
         public bool rEnable { get; set; }
         public DateTime rCreate { get; set; }
         public DateTime rExpire { get; set; }
+        private string _rCreateJalali = "";
+        public string rCreateJalali
+        {
+            get
+            {
+                _rCreateJalali = Utility.ConvertDateToPersian(rCreate);
+                return _rCreateJalali;
+            }
+        }
+        private string _rExpireJalali = "";
+        public string rExpireJalali
+        {
+            get
+            {
+                _rExpireJalali = Utility.ConvertDateToPersian(rExpire);
+                return _rExpireJalali;
+            }
+        }
         public virtual AppUser AppUser { get; set; }
         public string AppUserId { get; set; }
 
