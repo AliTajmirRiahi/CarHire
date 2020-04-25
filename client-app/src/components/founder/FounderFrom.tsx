@@ -47,7 +47,7 @@ const FounderFrom = () => {
         </a>
       </p>
       <h5 className='centered art-UserName' style={{ fontSize: 20 }}>
-        {sfounder && sfounder.rLastName != ''
+        {sfounder && sfounder.rLastName !== ''
           ? sfounder.rFirstName + ' ' + sfounder.rLastName
           : user?.username}
       </h5>

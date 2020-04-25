@@ -20,6 +20,7 @@ export default class CommonStore {
   @observable token: string | null = window.localStorage.getItem('token');
   @observable submitting = false;
   @observable loading = false;
+  @observable apploading = true;
   // @observable multiSelect = false;
 
   @action setToken = (token: string | null) => {
@@ -32,7 +33,9 @@ export default class CommonStore {
   @action setLoading = (value: boolean) => {
     this.loading = value;
   };
-
+  @action setApploading = () => {
+    this.apploading = false;
+  };
   // @action setMultiSelect = (value: boolean) => {
   //   this.multiSelect = value;
   // };

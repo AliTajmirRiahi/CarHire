@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import '../css/style-responsive.css';
 import '../css/style.css';
 import '../css/table-responsive.css';
@@ -9,8 +9,15 @@ import '../myIconFont/styles.css';
 import AdminHeader from './AdminHeader';
 import AdminRightPanel from './AdminRightPanel';
 import AdminMainContent from './AdminMainContent';
+import { observer } from 'mobx-react-lite';
+import { RootStoreContext } from '../../stores/rootStore';
+import { artMenu } from '../../layout/js/art-menu.js';
 
 const Admin = () => {
+  const rootStore = useContext(RootStoreContext);
+  const { apploading } = rootStore.commonStore;
+
+  if (!apploading) artMenu();
   return (
     <section id='container' style={{ position: 'relative' }}>
       <AdminHeader />
@@ -37,4 +44,4 @@ const Admin = () => {
   );
 };
 
-export default Admin;
+export default observer(Admin);

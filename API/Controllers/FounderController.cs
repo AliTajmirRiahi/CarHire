@@ -18,7 +18,6 @@ namespace API.Controllers
         //     return await Mediator.Send(new Delete.Command { Id = id });
         // }
         [HttpPut("{id}")]
-        [AllowAnonymous]
         public async Task<ActionResult<Unit>> Edit(Guid id, Edit.Command command)
         {
             command.Id = id;

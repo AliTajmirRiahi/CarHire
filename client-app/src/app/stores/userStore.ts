@@ -57,6 +57,7 @@ export default class UserStore {
         this.user = user;
         if (user.founder) this.rootStore.founderStore.setFounder(user.founder);
       });
+      this.rootStore.commonStore.setToken(user.token);
       console.log(user);
     } catch (error) {}
   };

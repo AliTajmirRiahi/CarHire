@@ -1,11 +1,14 @@
 import React, { useContext } from 'react';
 import { RootStoreContext } from '../../stores/rootStore';
 import { observer } from 'mobx-react-lite';
-
+import { history } from '../../..';
 const AdminRightPanel = () => {
   const rootContext = useContext(RootStoreContext);
   const { user } = rootContext.userStore;
   const { founder } = rootContext.founderStore;
+  const {
+    location: { pathname },
+  } = history;
   return (
     <div className='col-sm-auto'>
       <aside>
@@ -24,12 +27,15 @@ const AdminRightPanel = () => {
               </a>
             </p>
             <h5 className='centered art-UserName'>
-              {founder && founder.rLastName != ''
+              {founder && founder.rLastName !== ''
                 ? founder.rFirstName + ' ' + founder.rLastName
                 : user?.username}
             </h5>
             <li className='mt'>
-              <a className='active' href='#/'>
+              <a
+                className={pathname === '/dashboard' ? 'active' : ''}
+                href='#/'
+              >
                 <i className='icon icon-performance'></i>
                 <span>میزکار</span>
               </a>
@@ -45,8 +51,15 @@ const AdminRightPanel = () => {
                 ></i>
               </a>
               <ul style={{ display: 'none' }}>
-                <li className='sub-menu '>
-                  <a href='/dashboard/Banklist'>
+                <li className='sub-menu mt-1'>
+                  <a
+                    href='/dashboard/Banklist'
+                    className={
+                      pathname.toLocaleLowerCase().includes('banklist')
+                        ? 'active'
+                        : ''
+                    }
+                  >
                     <i className='icon icon-bank-1' aria-hidden='true'></i>
                     <span>بانک ها</span>
                   </a>
@@ -99,7 +112,7 @@ const AdminRightPanel = () => {
                 ></i>
               </a>
               <ul style={{ display: 'none' }}>
-                <li className='sub-menu '>
+                <li className='sub-menu mt-1'>
                   <a href='#/'>
                     <i
                       className='icon icon-license-plate-2'
@@ -115,13 +128,27 @@ const AdminRightPanel = () => {
                   </a>
                 </li>
                 <li className='sub-menu '>
-                  <a href='/dashboard/InsuranceType'>
+                  <a
+                    href='/dashboard/InsuranceType'
+                    className={
+                      pathname.toLocaleLowerCase().includes('insurancetype')
+                        ? 'active'
+                        : ''
+                    }
+                  >
                     <i className='fa fa-building' aria-hidden='true'></i>
                     <span>انواع بیمه</span>
                   </a>
                 </li>
                 <li className='sub-menu '>
-                  <a href='/dashboard/InsuranceCompany'>
+                  <a
+                    href='/dashboard/InsuranceCompany'
+                    className={
+                      pathname.toLocaleLowerCase().includes('insurancecompany')
+                        ? 'active'
+                        : ''
+                    }
+                  >
                     <i className='fa fa-building' aria-hidden='true'></i>
                     <span>شرکت های بیمه</span>
                   </a>
@@ -171,7 +198,7 @@ const AdminRightPanel = () => {
                 ></i>
               </a>
               <ul style={{ display: 'none' }}>
-                <li className='sub-menu '>
+                <li className='sub-menu mt-1'>
                   <a href='#/'>
                     <i className='icon icon-control-1' aria-hidden='true'></i>
                     <span>تنظیمات کلی</span>

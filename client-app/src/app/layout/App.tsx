@@ -13,23 +13,25 @@ import { RootStoreContext } from '../stores/rootStore';
 import { observer } from 'mobx-react-lite';
 import { ToastContainer } from 'react-toastify';
 import NotFound from '../../components/layout/NotFound';
-import '../layout/js/art-menu.js';
+
 import Admin from '../../app/layout/admin/Admin';
 import ModalContainer from '../../components/modals/ModalContainer';
 import LoginPage from '../../components/user/LoginPage';
+import PrivateRoute from './PrivateRoute';
 
 function App() {
   const rootStore = useContext(RootStoreContext);
-  const { token } = rootStore.commonStore;
+  const { token, setApploading, apploading } = rootStore.commonStore;
   const { getUser } = rootStore.userStore;
   useEffect(() => {
     if (token) {
-      getUser();
-      // .finally(() => setAppLoaded())
+      getUser().finally(() => setApploading());
     } else {
-      // setAppLoaded();
+      setApploading();
     }
-  }, [token, getUser]);
+  }, [token, getUser, setApploading]);
+
+  if (apploading) return <div></div>;
   return (
     <Fragment>
       <ModalContainer />
@@ -43,7 +45,7 @@ function App() {
           <Route exact path='/' component={BaseHomePage} />
           <Route exact path='/login' component={LoginPage} />
           <Route exact path='/register' component={RegisterForm} />
-          <Route exact path='/dashboard*' component={Admin} />
+          <PrivateRoute exact path='/dashboard*' component={Admin} />
           <Route component={NotFound} />
         </Switch>
       </div>

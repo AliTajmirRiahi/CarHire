@@ -35,12 +35,17 @@ const NavBar = () => {
               <Nav.Item>
                 <NavDropdown title=' ' id='collasible-nav-dropdown'>
                   <NavDropdown.Item href='#action/3.1'>
-                    <Row>
-                      <Col className='text-right '>
-                        <i className='fa fa-tachometer' aria-hidden='true'></i>
-                      </Col>
-                      <Col className='text-center '>داشبورد</Col>
-                    </Row>
+                    <a href='/dashboard'>
+                      <Row>
+                        <Col className='text-right '>
+                          <i
+                            className='fa fa-tachometer'
+                            aria-hidden='true'
+                          ></i>
+                        </Col>
+                        <Col className='text-center '>داشبورد</Col>
+                      </Row>
+                    </a>
                   </NavDropdown.Item>
                   <NavDropdown.Divider />
                   <NavDropdown.Item onClick={log}>

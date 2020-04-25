@@ -6,6 +6,11 @@ import { observer } from 'mobx-react-lite';
 const AdminHeader = () => {
   const rootContext = useContext(RootStoreContext);
   const { loading } = rootContext.commonStore;
+  const { logout } = rootContext.userStore;
+  const logOut = () => {
+    logout();
+  };
+
   return (
     <Fragment>
       <header className='header black-bg'>
@@ -283,7 +288,7 @@ const AdminHeader = () => {
             <div className='top-menu'>
               <ul className='nav pull-right top-menu'>
                 <li>
-                  <a className='logout' href='login.html'>
+                  <a className='logout' href='#/' onClick={logOut}>
                     خروج
                   </a>
                 </li>
