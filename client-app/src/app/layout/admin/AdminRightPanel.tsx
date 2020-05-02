@@ -5,7 +5,6 @@ import { history } from '../../..';
 const AdminRightPanel = () => {
   const rootContext = useContext(RootStoreContext);
   const { user } = rootContext.userStore;
-  const { founder } = rootContext.founderStore;
   const {
     location: { pathname },
   } = history;
@@ -20,15 +19,19 @@ const AdminRightPanel = () => {
               <a href='/dashboard/Founder'>
                 <img
                   alt=''
-                  src='/assets/user.png'
+                  src={
+                    user?.photo != undefined
+                      ? user.photo.path
+                      : '/assets/user.png'
+                  }
                   className='rounded-circle'
                   width='80'
                 />
               </a>
             </p>
             <h5 className='centered art-UserName'>
-              {founder && founder.rLastName !== ''
-                ? founder.rFirstName + ' ' + founder.rLastName
+              {user?.founder && user.aLastName !== ''
+                ? user.aFirstName + ' ' + user.aLastName
                 : user?.username}
             </h5>
             <li className='mt'>

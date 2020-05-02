@@ -1,9 +1,12 @@
-import { IFounder } from './founder';
+import { IFounder, Founder } from './founder';
+import { IPhoto } from './photo';
 export interface IUser {
   token: string;
   username: string;
+  aFirstName: string;
+  aLastName: string;
   founder: IFounder;
-  image?: string;
+  photo?: IPhoto;
 }
 
 export interface IUserFormValues {
@@ -11,4 +14,17 @@ export interface IUserFormValues {
   password: string;
   displayName?: string;
   username?: string;
+}
+
+export class User implements IUser {
+  token: string = '';
+  username: string = '';
+  aFirstName: string = '';
+  aLastName: string = '';
+  founder: IFounder = new Founder(undefined);
+  photo?: IPhoto;
+
+  constructor(init?: IUser) {
+    Object.assign(this, init);
+  }
 }

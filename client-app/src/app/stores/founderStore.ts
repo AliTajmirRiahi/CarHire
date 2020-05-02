@@ -3,6 +3,7 @@ import { RootStore } from './rootStore';
 import { observable, action, runInAction } from 'mobx';
 import { IFounder } from '../models/founder';
 import agent from '../api/agent';
+import { IUser } from '../models/user';
 export default class FounderStore {
   rootStore: RootStore;
 
@@ -16,10 +17,10 @@ export default class FounderStore {
     this.founder = founder;
   };
 
-  @action updateFounder = async (founder: IFounder) => {
-    await agent.Founder.update(founder);
+  @action updateFounder = async (user: IUser) => {
+    await agent.Founder.update(user);
     runInAction(() => {
-      this.founder = founder;
+      this.rootStore.userStore.getUser();
     });
     toast('اطلاعات شما با موفقیت ذخیره شد');
   };

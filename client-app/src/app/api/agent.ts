@@ -5,6 +5,7 @@ import axios, { AxiosResponse } from 'axios';
 import { history } from '../..';
 import { toast } from 'react-toastify';
 import { IBaseInfo } from '../models/baseInfo';
+import { IPhoto } from '../models/photo';
 // axios.defaults.baseURL = process.env.REACT_APP_API_URL;
 axios.defaults.baseURL = 'http://localhost:5000/api';
 const responseBody = (response: AxiosResponse) => response.data;
@@ -78,8 +79,7 @@ const requests = {
 };
 
 const Founder = {
-  update: (founder: IFounder) =>
-    requests.put(`/founder/${founder.id}`, founder),
+  update: (user: IUser) => requests.put(`/founder`, user),
 };
 
 const User = {
@@ -109,4 +109,9 @@ const BaseInfo = {
     requests.del(`/BaseInfo/MultiDelete/${idlist}`),
 };
 
-export default { User, BaseInfo, Founder };
+const Photo = {
+  Add: (formData: FormData): Promise<IPhoto> =>
+    requests.post('/Photo/User', formData),
+};
+
+export default { User, BaseInfo, Founder, requests, Photo };

@@ -1,7 +1,5 @@
 export interface IFounder {
   id: string;
-  rFirstName: string;
-  rLastName: string;
   rSub: string;
   rTitle: string;
   rContactMail: string;
@@ -14,8 +12,6 @@ export interface IFounder {
 
 export class Founder implements IFounder {
   id: string = '';
-  rFirstName: string = '';
-  rLastName: string = '';
   rSub: string = '';
   rTitle: string = '';
   rContactMail: string = '';

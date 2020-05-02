@@ -477,3 +477,76 @@ input#txtDashSearch {
   padding: 6px;
   margin: 0px;
 }
+.dzu-dropzone {
+  overflow: initial;
+  padding: 20px;
+  display: inline-block;
+  border: 2px dashed #a7a7a7;
+  border-radius: 20px;
+}
+.dzu-dropzone:hover {
+  border-color: #493eff85;
+}
+.dzu-previewImage {
+  height: 180px;
+  width: 195px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  max-height: inherit;
+  max-width: inherit;
+  transition: all 0.15s linear;
+}
+.dzu-previewImage:hover {
+  transform: scale(1.05);
+}
+.dzu-previewContainer {
+  padding: 20px 3%;
+  display: block;
+}
+.dzu-prevImg {
+  display: inline-block;
+  position: relative;
+  margin-left: 15px;
+  margin-bottom: 15px;
+}
+.dzu-progressBar {
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 95px;
+  right: 35px;
+  z-index: 1;
+  width: 60%;
+}
+.dzu-inputLabel,
+.dzu-inputLabelWithFiles {
+  font-family: inherit;
+}
+.art-hide {
+  display: none;
+}
+.art-img {
+  width: 150px;
+  height: 150px;
+}
+.art-a-edit {
+  position: relative;
+}
+.art-a-edit:hover .art-eidthover {
+  display: initial;
+}
+.art-fa-edit {
+  line-height: 150px;
+  font-size: 30px;
+  color: red;
+}
+.art-eidthover {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  left: 0;
+  top: -63px;
+  background-color: #00968852;
+  border-radius: 50%;
+  display: none;
+}

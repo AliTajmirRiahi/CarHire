@@ -18,6 +18,7 @@ namespace Persistence
         public DbSet<InsuranceType> InsuranceTypes { get; set; }
         public DbSet<InsuranceCompany> InsuranceCompanies { get; set; }
         public DbSet<Founder> Founders { get; set; }
+        public DbSet<Photo> Photos { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

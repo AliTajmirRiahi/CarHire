@@ -9,24 +9,17 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Application.BasiesInfo;
 using Microsoft.AspNetCore.Http;
+using Application.Photos;
 
 namespace API.Controllers
 {
     public class PhotoController : BaseController
     {
-        [HttpPost()]
+        [HttpPost("{subFolder}")]
         [AllowAnonymous]
-        public async Task<ActionResult<Unit>> Upload(IFormFile file)
+        public async Task<ActionResult<PhotoDto>> Upload(string subFolder, IFormFile file)
         {
-            // var uploads = Path.Combine(_environment.WebRootPath, "uploads");
-            // if (file.Length > 0)
-            // {
-            //     using (var fileStream = new FileStream(Path.Combine(uploads, file.FileName), FileMode.Create))
-            //     {
-            //         await file.CopyToAsync(fileStream);
-            //     }
-            // }
-            return null;
+            return await Mediator.Send(new Add.Command() { subFolder = subFolder, file = file });
         }
     }
 }

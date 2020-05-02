@@ -10,8 +10,6 @@ namespace Domain
     {
         public Founder()
         {
-            rFirstName = "";
-            rLastName = "";
             rSub = "";
             rTitle = "";
             rContactMail = "";
@@ -23,8 +21,6 @@ namespace Domain
         }
 
         public Guid Id { get; set; }
-        public string rFirstName { get; set; }
-        public string rLastName { get; set; }
         public string rSub { get; set; }
         public string rTitle { get; set; }
         public string rContactMail { get; set; }

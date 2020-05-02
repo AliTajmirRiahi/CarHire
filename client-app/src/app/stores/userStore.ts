@@ -1,3 +1,4 @@
+import { IPhoto } from './../models/photo';
 import { history } from '../..';
 import { RootStore } from './rootStore';
 import { observable, computed, action, runInAction } from 'mobx';
@@ -25,7 +26,6 @@ export default class UserStore {
       });
       this.rootStore.commonStore.setToken(user.token);
       this.rootStore.modalStore.closeModal();
-      console.log(user);
       history.push('/dashboard');
     } catch (error) {}
   };
@@ -58,7 +58,14 @@ export default class UserStore {
         if (user.founder) this.rootStore.founderStore.setFounder(user.founder);
       });
       this.rootStore.commonStore.setToken(user.token);
-      console.log(user);
+    } catch (error) {}
+  };
+
+  @action setPhoto = (photo: IPhoto) => {
+    try {
+      runInAction(() => {
+        if (this.user) this.user.photo = photo;
+      });
     } catch (error) {}
   };
 }

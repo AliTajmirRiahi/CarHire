@@ -5,8 +5,6 @@ namespace Application.Founders
     public class FounderDto
     {
         public Guid Id { get; set; }
-        public string rFirstName { get; set; }
-        public string rLastName { get; set; }
         public string rSub { get; set; }
         public string rTitle { get; set; }
         public string rContactMail { get; set; }

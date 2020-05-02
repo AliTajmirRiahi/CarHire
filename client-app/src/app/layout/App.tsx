@@ -1,5 +1,4 @@
 import React, { useEffect, useContext, Fragment } from 'react';
-import '../../app/layout/style.css';
 import '../../app/layout/artaFont.css';
 import '../layout/css/checkbox.scss';
 import '../layout/css/pagination.css';
@@ -18,6 +17,7 @@ import Admin from '../../app/layout/admin/Admin';
 import ModalContainer from '../../components/modals/ModalContainer';
 import LoginPage from '../../components/user/LoginPage';
 import PrivateRoute from './PrivateRoute';
+import '../../app/layout/style.css';
 
 function App() {
   const rootStore = useContext(RootStoreContext);
